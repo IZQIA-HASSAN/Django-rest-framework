@@ -1,13 +1,18 @@
+import requests
 import json
 
-python_data = {
-    "name" : "izqia",
-    "roll_no" : 247719
-}
+URL = "http://127.0.0.1:8000/student/"
 
-load_data = json.dumps(python_data)
-print(load_data)
+def get_data(id = None):
+    data = {}
+    if id is not None:
+        data = {'id' : id}
 
-parsed_data = json.loads(load_data)
-print(parsed_data)
-print(type(parsed_data))
+    json_data = json.dumps(data)
+    r = requests.get(url = URL ,data=json_data )
+
+    data = r.json()
+    print(data)
+
+get_data() 
+     
