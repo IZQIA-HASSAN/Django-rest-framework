@@ -19,7 +19,7 @@ def get_data(id = None):
 
 def post_data():
     data = {
-        'name' : 'meerali',
+        'name' : 'reerali',
         'roll' : 33,
         'city' : "buffa"
     }
