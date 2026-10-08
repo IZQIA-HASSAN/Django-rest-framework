@@ -18,5 +18,14 @@ class Stu_serializer(serializers.Serializer):
           instance.save()
           return instance
 
+     # Felld Level validation for roll
+
+     def validate_roll(self , value):
+          if value >= 200:
+               raise serializers.ValidationError('seat full')
+
+          return value
+
+
 
 
