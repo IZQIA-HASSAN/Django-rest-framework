@@ -26,6 +26,19 @@ class Stu_serializer(serializers.Serializer):
 
           return value
 
+     #Object level validation
+
+     def validate(self , data):
+          nm = data.get('name')
+          ct = data.get('city')
+
+          if nm.lower() == 'meerali' and ct.lower() != 'mansehra':
+               raise serializers.ValidationError("city must be mansehra")
+
+          return data
+
+
+
 
 
 
