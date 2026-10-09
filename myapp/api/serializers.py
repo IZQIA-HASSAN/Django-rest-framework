@@ -2,47 +2,53 @@ from rest_framework import serializers
 from .models import Student
 
 
-# validators 
-def start_wit_r(value):
-     if value[0].lower() != 'r':
-          raise serializers.ValidationError("Name shoud start with r")
+class Stu_serializer(serializers.ModelSerializer):
+     class Meta:
+          model = Student
+          fields = ['name' , 'roll' , 'city']
 
 
-class Stu_serializer(serializers.Serializer):
-     name = serializers.CharField(max_length=100 , validators=[start_wit_r])
-     roll = serializers.IntegerField()
-     city = serializers.CharField(max_length=100)
+# # validators 
+# def start_wit_r(value):
+#      if value[0].lower() != 'r':
+          # raise serializers.ValidationError("Name shoud start with r")
+# 
 
-     def create(self , validated_data):
-          return Student.objects.create(**validated_data)
+# class Stu_serializer(serializers.Serializer):
+#      name = serializers.CharField(max_length=100 , validators=[start_wit_r])
+#      roll = serializers.IntegerField()
+#      city = serializers.CharField(max_length=100)
 
-     def update(self , instance , validated_data):
-          print(instance.name)
-          instance.name = validated_data.get('name' ,instance.name)
-          print(instance.name)
-          instance.roll = validated_data.get('roll' ,instance.name)
-          instance.city = validated_data.get('city' ,instance.name)
-          instance.save()
-          return instance
+#      def create(self , validated_data):
+#           return Student.objects.create(**validated_data)
 
-     # Felld Level validation for roll
+#      def update(self , instance , validated_data):
+#           print(instance.name)
+#           instance.name = validated_data.get('name' ,instance.name)
+#           print(instance.name)
+#           instance.roll = validated_data.get('roll' ,instance.name)
+#           instance.city = validated_data.get('city' ,instance.name)
+#           instance.save()
+#           return instance
 
-     def validate_roll(self , value):
-          if value >= 200:
-               raise serializers.ValidationError('seat full')
+#      # Felld Level validation for roll
 
-          return value
+#      def validate_roll(self , value):
+#           if value >= 200:
+#                raise serializers.ValidationError('seat full')
 
-     #Object level validation
+#           return value
 
-     def validate(self , data):
-          nm = data.get('name')
-          ct = data.get('city')
+#      #Object level validation
 
-          if nm.lower() == 'meerali' and ct.lower() != 'mansehra':
-               raise serializers.ValidationError("city must be mansehra")
+#      def validate(self , data):
+#           nm = data.get('name')
+#           ct = data.get('city')
 
-          return data
+#           if nm.lower() == 'meerali' and ct.lower() != 'mansehra':
+#                raise serializers.ValidationError("city must be mansehra")
+
+#           return data
 
 
 
