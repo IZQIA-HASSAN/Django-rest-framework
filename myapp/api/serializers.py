@@ -3,9 +3,13 @@ from .models import Student
 
 
 class Stu_serializer(serializers.ModelSerializer):
+     # name = serializers.CharField(read_only=True)
      class Meta:
           model = Student
           fields = ['name' , 'roll' , 'city']
+          # for read only feilds
+          read_only_feilds = ['name' , 'roll']
+          extra_kwargs = {"name" : {'read_only':True}}
 
 
 # # validators 
