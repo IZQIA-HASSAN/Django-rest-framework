@@ -2,7 +2,7 @@ import requests
 import json
 
 
-URL = "http://127.0.0.1:8000/student/"
+URL = "http://127.0.0.1:8000/studentapi/"
 
 def get_data(id = None):
     data = {}
@@ -15,7 +15,7 @@ def get_data(id = None):
     data = r.json()
     print(data)
 
-# get_data() 
+get_data() 
 
 def post_data():
     data = {
@@ -44,7 +44,7 @@ def update_data():
     data = r.json()
     print(data)
 
-update_data()
+# update_data()
 
 
 def delete_data():
