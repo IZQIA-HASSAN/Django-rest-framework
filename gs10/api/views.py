@@ -90,36 +90,36 @@
 
 # Generic Api view
 
-from .models import Student
-from .serializer import StudentSerializer
-from rest_framework.generics import GenericAPIView
-from rest_framework.mixins import ListModelMixin , CreateModelMixin , RetrieveModelMixin  , UpdateModelMixin , DestroyModelMixin
+# from .models import Student
+# from .serializer import StudentSerializer
+# from rest_framework.generics import GenericAPIView
+# from rest_framework.mixins import ListModelMixin , CreateModelMixin , RetrieveModelMixin  , UpdateModelMixin , DestroyModelMixin
 
-class StudentList_create(GenericAPIView , ListModelMixin , CreateModelMixin):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
+# class StudentList_create(GenericAPIView , ListModelMixin , CreateModelMixin):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
 
-    def get(self , request , *args , **kwargs):
-        return self.list(request , *args , **kwargs)
+#     def get(self , request , *args , **kwargs):
+#         return self.list(request , *args , **kwargs)
 
-    def post(self , request , *args , **kwargs):
-        return self.create(request , *args , **kwargs)
+#     def post(self , request , *args , **kwargs):
+#         return self.create(request , *args , **kwargs)
 
 
 # combined the retrive , update and destroy as they all require 'pk'
 
-class StudentRUD(GenericAPIView , RetrieveModelMixin , UpdateModelMixin , DestroyModelMixin):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
+# class StudentRUD(GenericAPIView , RetrieveModelMixin , UpdateModelMixin , DestroyModelMixin):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
 
-    def get(self , request , *args , **kwargs):
-        return self.retrieve(request , *args , **kwargs)
+#     def get(self , request , *args , **kwargs):
+#         return self.retrieve(request , *args , **kwargs)
 
-    def put(self , request , *args , **kwargs):
-            return self.update(request , *args , **kwargs)
+#     def put(self , request , *args , **kwargs):
+#             return self.update(request , *args , **kwargs)
 
-    def delete(self , request , *args , **kwargs):
-        return self.destroy(request , *args , **kwargs)
+#     def delete(self , request , *args , **kwargs):
+#         return self.destroy(request , *args , **kwargs)
 
 
 
@@ -143,3 +143,50 @@ class StudentRUD(GenericAPIView , RetrieveModelMixin , UpdateModelMixin , Destro
 
 #     def get(self , request , *args , **kwargs):
 #         return self.destroy(request , *args , **kwargs)
+
+
+
+# Concrete API View Class
+
+
+from .models import Student
+from .serializer import StudentSerializer
+from rest_framework.generics import ListAPIView , CreateAPIView , RetrieveAPIView , UpdateAPIView , DestroyAPIView , ListCreateAPIView , RetrieveUpdateAPIView , RetrieveDestroyAPIView , RetrieveUpdateDestroyAPIView
+
+
+class StudentList(ListAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+class Studentcreate(CreateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+class studentret(RetrieveAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+class Studentupd(UpdateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+class Studentdes(DestroyAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+class StudentLC(ListCreateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+class StudentRU(RetrieveUpdateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+class StudentRD(RetrieveDestroyAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+class StudentRUD(RetrieveUpdateDestroyAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
