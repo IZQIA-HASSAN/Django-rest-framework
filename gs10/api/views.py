@@ -4,43 +4,85 @@ from rest_framework.response import Response
 from .models import Student
 from .serializer import StudentSerializer
 from rest_framework import status
+from rest_framework.views import APIView\
 
-# Create your views here.
-@api_view(['GET' , 'POST' , 'PUT' , 'DELETE'])
+class StudentAPI(APIView):
+    def get(self , request , format=None ,pk=None):
+        
+                id = pk
+                if id is not None:
+                    stu = Student.objects.get(id=id)
+                    serializer = StudentSerializer(stu)
+                    return Response(serializer.data)
+                stu = Student.objects.all()
+                serializer = StudentSerializer(stu , many=True)
+                return Response(serializer.data)
 
-def student_api(request , pk=None ):
-    if request.method == 'GET':
-        id = pk
-        if id is not None:
-            stu = Student.objects.get(id=id)
-            serializer = StudentSerializer(stu)
-            return Response(serializer.data)
-        stu = Student.objects.all()
-        serializer = StudentSerializer(stu , many=True)
-        return Response(serializer.data)
-
-    if request.method == 'POST':
-        serializer = StudentSerializer(data = request.data)
-        if serializer.is_valid():
+    def post(self , request , format=None):
+         serializer = StudentSerializer(data = request.data)
+         if serializer.is_valid():
             serializer.save()
             return Response({'msg' : 'Data Created'},status=status.HTTP_201_CREATED)
-        return Response({'msg' : 'Data not created'} , status=status.HTTP_400_BAD_REQUEST )
+         return Response({'msg' : 'Data not created'} , status=status.HTTP_400_BAD_REQUEST )
 
-    if request.method == 'PUT':
+    def put(self , request , format=None , pk=None):
         id = pk
         stu = Student.objects.get(pk=id)
         serializer = StudentSerializer(stu , data=request.data , partial=True)
         if serializer.is_valid():
-            serializer.save()
-            return Response({'msg' : "Data updated"})
+          serializer.save()
+          return Response({'msg' : "Data updated"})
         return Response(serializer.errors)
 
-    if request.method == 'DELETE':
+    def delete(self , request , format=None , pk=None):
         id = pk
         if id is not None:
-            stu = Student.objects.delete(pk=id)
-            stu.delete()
-            return Response({'msg' : 'Data deleted'})
+         stu = Student.objects.delete(pk=id)
+         stu.delete()
+         return Response({'msg' : 'Data deleted'})
+
+
+         
+         
+         
+
+
+# # Create your views here.
+# @api_view(['GET' , 'POST' , 'PUT' , 'DELETE'])
+
+# def student_api(request , pk=None ):
+#     if request.method == 'GET':
+#         id = pk
+#         if id is not None:
+#             stu = Student.objects.get(id=id)
+#             serializer = StudentSerializer(stu)
+#             return Response(serializer.data)
+#         stu = Student.objects.all()
+#         serializer = StudentSerializer(stu , many=True)
+#         return Response(serializer.data)
+
+#     if request.method == 'POST':
+#         serializer = StudentSerializer(data = request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response({'msg' : 'Data Created'},status=status.HTTP_201_CREATED)
+#         return Response({'msg' : 'Data not created'} , status=status.HTTP_400_BAD_REQUEST )
+
+#     if request.method == 'PUT':
+#         id = pk
+#         stu = Student.objects.get(pk=id)
+#         serializer = StudentSerializer(stu , data=request.data , partial=True)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response({'msg' : "Data updated"})
+#         return Response(serializer.errors)
+
+#     if request.method == 'DELETE':
+#         id = pk
+#         if id is not None:
+#             stu = Student.objects.delete(pk=id)
+#             stu.delete()
+#             return Response({'msg' : 'Data deleted'})
             
 
 
