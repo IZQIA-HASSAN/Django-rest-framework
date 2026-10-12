@@ -154,23 +154,44 @@ from .serializer import StudentSerializer
 from rest_framework.generics import ListAPIView , CreateAPIView , RetrieveAPIView , UpdateAPIView , DestroyAPIView , ListCreateAPIView , RetrieveUpdateAPIView , RetrieveDestroyAPIView , RetrieveUpdateDestroyAPIView
 
 
-class StudentList(ListAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
+# class StudentList(ListAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
 
-class Studentcreate(CreateAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
+# class Studentcreate(CreateAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
 
-class studentret(RetrieveAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
+# class studentret(RetrieveAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
 
-class Studentupd(UpdateAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
+# class Studentupd(UpdateAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
 
-class Studentdes(DestroyAPIView):
+# class Studentdes(DestroyAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+# class StudentLC(ListCreateAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+# class StudentRU(RetrieveUpdateAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+# class StudentRD(RetrieveDestroyAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+# class StudentRUD(RetrieveUpdateDestroyAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+# we can also do this whole thing with just two classes
+class StudentRUD(RetrieveUpdateDestroyAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
@@ -178,15 +199,5 @@ class StudentLC(ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
-class StudentRU(RetrieveUpdateAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
 
-class StudentRD(RetrieveDestroyAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
-
-class StudentRUD(RetrieveUpdateDestroyAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
 
