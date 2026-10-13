@@ -9,7 +9,10 @@ router = DefaultRouter()
 
 # register student view set with router
 
-router.register('studentapi' , views.StudentView , basename= 'student')
+# router.register('studentapi' , views.StudentView , basename= 'student')
+
+# same router for model viewsets
+router.register('studentapi' , views.StudentModelViewSet , basename= 'student')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
