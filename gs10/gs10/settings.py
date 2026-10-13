@@ -127,3 +127,11 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+
+
+# global settings for authentication and permission 
+# REST_FRAMEWORK={
+#     'DEFUALT_AUTHENTICATION_CLASSES':['rest_framework.authentication.BasicAuthentication'],
+#     'DEFUALT_PERMISSION_CLASSES':['rest_framework.permissions.isAuthenticated']
+# }
