@@ -143,3 +143,10 @@ REST_FRAMEWORK={
         'rate' : '3/minute'
     }
 }
+
+REST_FRAMEWORK={
+    'DEFAULT_THROTTLE_RATES' :{
+        'viewstu' : '5/hour',
+        'modifystu' : '2/day'
+    }
+}
