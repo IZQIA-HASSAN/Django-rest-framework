@@ -136,3 +136,9 @@ MAILERS = {
 #     'DEFUALT_AUTHENTICATION_CLASSES':['rest_framework.authentication.BasicAuthentication'],
 #     'DEFUALT_PERMISSION_CLASSES':['rest_framework.permissions.isAuthenticated']
 # }
+REST_FRAMEWORK={
+    'DEFAULT_THROTTLE_RATES' :{
+        'anon' : '2/day',
+        'user' : '5/hour'
+    }
+}

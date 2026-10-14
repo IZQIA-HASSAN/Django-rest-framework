@@ -14,12 +14,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , include(router.urls)),
 
-    # token paths
-    path('access/' , TokenObtainPairView.as_view() , name='token_obtain_pair'),
-    path('refreshtoken/' , TokenRefreshView.as_view() , name='token_refresh'),
-    path('verifytoken/' , TokenVerifyView.as_view() , name='token_verify'),
-    
     path('auth/' , include('rest_framework.urls' , namespace='rest_framework'))
+
+    # token paths
+    # path('access/' , TokenObtainPairView.as_view() , name='token_obtain_pair'),
+    # path('refreshtoken/' , TokenRefreshView.as_view() , name='token_refresh'),
+    # path('verifytoken/' , TokenVerifyView.as_view() , name='token_verify'),
+    
+    # path('auth/' , include('rest_framework.urls' , namespace='rest_framework'))
     
 
 

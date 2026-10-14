@@ -243,16 +243,19 @@ from .serializer import StudentSerializer
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
 from api.customauth  import customauth
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.throttling import AnonRateThrottle , UserRateThrottle
 
 # custom permission classes
 
 class StudentModelViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    throttle_classes = [AnonRateThrottle , UserRateThrottle]
     
 
 
