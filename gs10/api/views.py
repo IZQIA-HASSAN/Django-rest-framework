@@ -244,16 +244,14 @@ from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
 from api.customauth  import customauth
 from rest_framework.permissions import IsAuthenticated
-
-
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 # custom permission classes
-
 
 class StudentModelViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    authentication_classes = [customauth]
+    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
     
 
