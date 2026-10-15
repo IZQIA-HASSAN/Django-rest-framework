@@ -276,13 +276,14 @@ from .serializer import StudentSerializer
 from rest_framework.generics import ListAPIView
 from .models import Student
 # from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter
+from rest_framework.filters import SearchFilter , OrderingFilter
 
 class studentlist(ListAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    filter_backends = [SearchFilter]
-    search_fields = ['city', 'name']
+    # filter_backends = [SearchFilter]
+    filter_backends = [OrderingFilter]
+    # search_fields = ['name']
     
     
 
