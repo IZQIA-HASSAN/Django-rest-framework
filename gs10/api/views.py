@@ -149,41 +149,41 @@
 # # Concrete API View Class
 
 
-from .models import Student
-from .serializer import StudentSerializer
-from rest_framework.generics import ListAPIView , CreateAPIView , RetrieveAPIView , UpdateAPIView , DestroyAPIView 
-from rest_framework.throttling import ScopedRateThrottle
+# from .models import Student
+# from .serializer import StudentSerializer
+# from rest_framework.generics import ListAPIView , CreateAPIView , RetrieveAPIView , UpdateAPIView , DestroyAPIView 
+# from rest_framework.throttling import ScopedRateThrottle
 
 
-class StudentList(ListAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
-    throttle_classes = [ScopedRateThrottle]
-    throttle_scope = 'viewstu'
+# class StudentList(ListAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+#     throttle_classes = [ScopedRateThrottle]
+#     throttle_scope = 'viewstu'
 
-class Studentcreate(CreateAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
-    throttle_classes = [ScopedRateThrottle]
-    throttle_scope = 'modifystu'
+# class Studentcreate(CreateAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+#     throttle_classes = [ScopedRateThrottle]
+#     throttle_scope = 'modifystu'
 
-class studentret(RetrieveAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
-    throttle_classes = [ScopedRateThrottle]
-    throttle_scope = 'viewstu'  
+# class studentret(RetrieveAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+#     throttle_classes = [ScopedRateThrottle]
+#     throttle_scope = 'viewstu'  
 
-class Studentupd(UpdateAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
-    throttle_classes = [ScopedRateThrottle]
-    throttle_scope = 'modifystu'
+# class Studentupd(UpdateAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+#     throttle_classes = [ScopedRateThrottle]
+#     throttle_scope = 'modifystu'
 
-class Studentdes(DestroyAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
-    throttle_classes = [ScopedRateThrottle]
-    throttle_scope = 'modifystu'
+# class Studentdes(DestroyAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+#     throttle_classes = [ScopedRateThrottle]
+#     throttle_scope = 'modifystu'
 
 # # class StudentLC(ListCreateAPIView):
 # #     queryset = Student.objects.all()
@@ -272,7 +272,16 @@ class Studentdes(DestroyAPIView):
 
 
      
+from .serializer import StudentSerializer
+from rest_framework.generics import ListAPIView
+from .models import Student
 
+class studentlist(ListAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+    def get_queryset(self):
+        user = self.request.user
+        return Student.objects.filter(passby=user)
 
 
 
