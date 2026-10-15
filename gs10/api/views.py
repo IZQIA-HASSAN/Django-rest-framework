@@ -283,6 +283,7 @@ class studentlist(ListAPIView):
     serializer_class = StudentSerializer
     # filter_backends = [SearchFilter]
     filter_backends = [OrderingFilter]
+    ordering_fields = ['name']
     # search_fields = ['name']
     
     
