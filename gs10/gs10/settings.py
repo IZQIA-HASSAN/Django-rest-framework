@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
     'rest_framework',
     'rest_framework.authtoken',
     'api',
@@ -150,3 +151,11 @@ REST_FRAMEWORK={
         'modifystu' : '2/day'
     }
 }
+
+# global django filters
+
+# DJANGO_REST_FRAMEWORK={
+#     'DEFAULT_FILTER_BACKENDS' :[
+#         'django_filters.rest_framework.DjangoFilterBackend'
+#     ]
+# }
