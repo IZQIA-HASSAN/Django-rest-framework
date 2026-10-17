@@ -278,12 +278,12 @@ from .models import Student
 # from django_filters.rest_framework import DjangoFilterBackend
 # from rest_framework.filters import SearchFilter , OrderingFilter
 from rest_framework.pagination import PageNumberPagination 
-from .pagination import myoffsetpagination
+from .pagination import cursorpagination
 
 class studentlist(ListAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    pagination_class = myoffsetpagination
+    pagination_class = cursorpagination
     
     
     
