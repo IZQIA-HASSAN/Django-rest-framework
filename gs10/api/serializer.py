@@ -1,7 +1,9 @@
 from rest_framework import serializers
-from .models import Student
+from .models import Singer , Song
 
-class StudentSerializer(serializers.ModelSerializer):
+class songserializer(serializers.ModelSerializer):
     class Meta : 
-        model = Student
-        fields = ['id' , 'name' , 'roll' , 'city' , 'passby']
+        model = Song
+        fields = ['id' , 'title' , 'singer' , 'duration' ]
+
+class singerserializer
