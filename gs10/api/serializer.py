@@ -9,4 +9,4 @@ class songserializer(serializers.ModelSerializer):
 class singerserializer(serializers.ModelSerializer):
     class Meta:
         model = Singer
-        fields = ['id' ,'name' , 'gender' ]
+        fields = ['id' ,'name' , 'gender']
