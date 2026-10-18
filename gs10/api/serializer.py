@@ -6,4 +6,7 @@ class songserializer(serializers.ModelSerializer):
         model = Song
         fields = ['id' , 'title' , 'singer' , 'duration' ]
 
-class singerserializer
+class singerserializer(serializers.ModelSerializer):
+    class Meta:
+        model = Singer
+        fields = ['id' ,'name' , 'gender' ]
