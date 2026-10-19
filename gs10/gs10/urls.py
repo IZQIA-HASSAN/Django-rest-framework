@@ -9,7 +9,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView , TokenRefreshVie
 # .router object
 router = DefaultRouter()
 
-router.register('studentapi' , views.studentview , basename='student' )
+router.register('singer' , views.Singerviewset , basename='singer' )
+router.register('song' , views.Songviewset , basename='song' )
 
 
 

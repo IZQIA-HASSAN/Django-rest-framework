@@ -273,22 +273,19 @@
 
  
 from rest_framework import viewsets
-from .models import Student
-from .serializer import studentserializer
-
-class studentview(viewsets.ModelViewSet):
-    queryset = Student.objects.all()
-    serializer_class = studentserializer
+from .models import  Singer ,Song
+from .serializer import SingerSerializer , Songserializer
 
 
-# class Singerviewset(viewsets.ModelViewSet):
-#     queryset = Singer.objects.all()
-#     serializer_class = singerserializer
+
+class Singerviewset(viewsets.ModelViewSet):
+    queryset = Singer.objects.all()
+    serializer_class = SingerSerializer
     
     
-# class Songviewset(viewsets.ModelViewSet):
-#     queryset = Song.objects.all()
-#     serializer_class = songserializer
+class Songviewset(viewsets.ModelViewSet):
+    queryset = Song.objects.all()
+    serializer_class = Songserializer
 
 
 
