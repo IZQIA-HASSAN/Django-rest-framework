@@ -2,19 +2,25 @@ from django.db import models
 
 # Create your models here.
 
-class Singer(models.Model):
-    name = models.CharField(max_length=100)
-    gender = models.CharField(max_length=100)
+# class Singer(models.Model):
+#     name = models.CharField(max_length=100)
+#     gender = models.CharField(max_length=100)
 
-    def __Str__(self):
-        return self.name
+#     def __Str__(self):
+#         return self.name
 
-    # here we have developer one to many relationship where we can have multiple songs related to one singer 
+#     # here we have developer one to many relationship where we can have multiple songs related to one singer 
 
-class Song(models.Model):
-    title = models.CharField(max_length=100)
-    singer = models.ForeignKey(Singer , on_delete=models.CASCADE , related_name='song')
-    duration = models.IntegerField()
+# class Song(models.Model):
+#     title = models.CharField(max_length=100)
+#     singer = models.ForeignKey(Singer , on_delete=models.CASCADE , related_name='song')
+#     duration = models.IntegerField()
 
-    def __str__(self):
-        return self.title
+
+#     def __str__(self):
+#         return self.title
+
+class Student(models.Model):
+    name = models.CharField(max_length=50)
+    roll = models.IntegerField()
+    city = models.CharField(max_length=50)
