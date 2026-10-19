@@ -272,10 +272,18 @@
 
 
      
+from .serializer import singerserializer , songserializer
+from rest_framework import viewsets
+from .models import Singer , Song
 
+class Singerviewset(viewsets.ModelViewSet):
+    queryset = Singer.objects.all()
+    serializer_class = singerserializer
     
     
-    
+class Songviewset(viewsets.ModelViewSet):
+    queryset = Song.objects.all()
+    serializer_class = songserializer
 
 
 

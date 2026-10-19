@@ -7,6 +7,7 @@ class songserializer(serializers.ModelSerializer):
         fields = ['id' , 'title' , 'singer' , 'duration' ]
 
 class singerserializer(serializers.ModelSerializer):
+    song = serializers.StringRelatedField(many=True , read_only=True)
     class Meta:
         model = Singer
-        fields = ['id' ,'name' , 'gender']
+        fields = ['id' ,'name' , 'gender' ,'song']
